@@ -59,10 +59,10 @@ public class EnderecoService {
                 return toDto(novo);
             }
 
-            throw new RuntimeException("CEP nÃ£o encontrado: " + cep);
+            throw new RuntimeException("CEP não encontrado: " + cep);
 
         } catch (Exception e) {
-            throw new RuntimeException("Erro ao consultar ViaCEP para o CEP: " + cep, e);
+            throw new RuntimeException("Erro ao consultar o CEP: " + cep, e);
         }
     }
 

@@ -37,7 +37,7 @@ public class CategoriaService {
 
     public CategoriaDTO atualizar(Long id, CategoriaDTO dto) {
     	
-        Categoria c = categoriaRepository.findById(id).orElseThrow(() -> new NotFoundException("Categoria não encontrada"));
+        Categoria c = categoriaRepository.findById(id).orElseThrow(() -> new NotFoundException("Não foi possível realizar essa atualização. Id não encontrado!"));
         c.setNome(dto.getNome());
         categoriaRepository.save(c);
         dto.setId(c.getId());
@@ -56,7 +56,7 @@ public class CategoriaService {
 
     public CategoriaDTO buscarPorId(Long id) {
         Categoria categoria = categoriaRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Categoria não encontrada"));
+                .orElseThrow(() -> new NotFoundException("Categoria não encontrada! Id não encontrada."));
         return toDto(categoria);
     }
     
@@ -71,7 +71,7 @@ public class CategoriaService {
 
     public void deletarCategoria(Long id) {
         Categoria categoria = categoriaRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Categoria não encontrada"));
+                .orElseThrow(() -> new RuntimeException("Não foi possível deletar esta categoria. Id não encontrada"));
 
         for (Produto p : categoria.getProdutos()) {
             p.setCategoria(null);

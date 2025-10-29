@@ -31,7 +31,7 @@ public class UsuarioDetalheImpl implements UserDetailsService {
         if (funcionarioOpt.isPresent()) {
             Funcionario funcionario = funcionarioOpt.get();
              if (funcionario.getUsuario() == null) {
-                throw new UsernameNotFoundException("Funcionário não possui credenciais definidas");
+                throw new UsernameNotFoundException("Funcionário não possui credenciais definidas.");
             }
             
             String role = funcionario.getUsuario().getRole();
@@ -48,7 +48,7 @@ public class UsuarioDetalheImpl implements UserDetailsService {
         if (clienteOpt.isPresent()) {
             Cliente cliente = clienteOpt.get();
             if (cliente.getUsuario() == null) {
-	            throw new UsernameNotFoundException("Cliente não possui credenciais definidas");
+	            throw new UsernameNotFoundException("Cliente não possui credenciais definidas.");
 	        }
 	        
             String role = cliente.getUsuario().getRole();
