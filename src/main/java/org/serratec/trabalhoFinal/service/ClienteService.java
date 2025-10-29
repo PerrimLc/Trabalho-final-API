@@ -76,7 +76,7 @@ public class ClienteService {
     @Transactional
     public ClienteDTO atualizar(Long id, @Valid ClienteAtualizacaoDTO dto) {
         Cliente cliente = clienteRepository.findById(id)
-                .orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
+                .orElseThrow(() -> new NotFoundException("As informações que foram passadas estão incorretas, tente novamente!"));
 
         cliente.setNome(dto.getNome());
         cliente.setTelefone(dto.getTelefone());

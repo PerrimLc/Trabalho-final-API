@@ -34,7 +34,7 @@ public class ProdutoService {
     		throw new IllegalArgumentException("O ID da categoria não pode ser nulo");
     	}
     	
-        Categoria cat = categoriaRepo.findById(dto.getCategoriaId()).orElseThrow(() -> new NotFoundException("Categoria não encontrada"));
+        Categoria cat = categoriaRepo.findById(dto.getCategoriaId()).orElseThrow(() -> new NotFoundException("Categoria não encontrada!"));
         Produto p = new Produto();
         p.setNome(dto.getNome());
         p.setPreco(dto.getPreco());
@@ -58,8 +58,8 @@ public class ProdutoService {
     }
 
     public ProdutoDTO atualizar(Long id, ProdutoDTO dto) {
-        Produto p = produtoRepo.findById(id).orElseThrow(() -> new NotFoundException("Produto não encontrado"));
-        Categoria cat = categoriaRepo.findById(dto.getCategoriaId()).orElseThrow(() -> new NotFoundException("Categoria não encontrada"));
+        Produto p = produtoRepo.findById(id).orElseThrow(() -> new NotFoundException("Produto não encontrado!"));
+        Categoria cat = categoriaRepo.findById(dto.getCategoriaId()).orElseThrow(() -> new NotFoundException("Categoria não encontrada!"));
         p.setNome(dto.getNome());
         p.setPreco(dto.getPreco());
         p.setCategoria(cat);
@@ -88,7 +88,7 @@ public class ProdutoService {
     }
     public void deletar(Long id) {
         Produto p = produtoRepo.findById(id)
-            .orElseThrow(() -> new NotFoundException("Produto não encontrado"));
+            .orElseThrow(() -> new NotFoundException("Produto não encontrado!"));
         p.setAtivo(false);
         produtoRepo.save(p);
     }
@@ -100,7 +100,7 @@ public class ProdutoService {
     
     public void darBaixaEstoque(Long produtoId, int quantidade) {
         Produto produto = produtoRepo.findById(produtoId)
-            .orElseThrow(() -> new NotFoundException("Produto não encontrado"));
+            .orElseThrow(() -> new NotFoundException("Produto não encontrado!"));
         
         Integer estoqueAtual = produto.getQuantidadeEstoque();
         
@@ -114,7 +114,7 @@ public class ProdutoService {
 
     public void adicionarEstoque(Long produtoId, int quantidade) {
         Produto produto = produtoRepo.findById(produtoId)
-            .orElseThrow(() -> new NotFoundException("Produto não encontrado"));
+            .orElseThrow(() -> new NotFoundException("Produto não encontrado!"));
         
         Integer estoqueAtual = produto.getQuantidadeEstoque() != null ? produto.getQuantidadeEstoque() : 0;
         

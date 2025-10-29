@@ -48,7 +48,7 @@ public class PedidoService {
 	@Transactional
 	public PedidoDTO criar(PedidoCriacaoDTO dto) {
 		Cliente cliente = clienteRepo.findById(dto.getClienteId())
-				.orElseThrow(() -> new NotFoundException("Cliente não encontrado"));
+				.orElseThrow(() -> new NotFoundException("Não foi possível criar o pedido. Cliente não encontrado!"));
 
 		Pedido pedido = new Pedido();
 		pedido.setCliente(cliente);
@@ -70,7 +70,7 @@ public class PedidoService {
 			item.setProduto(p);
 			item.setQuantidade(itemDTO.getQuantidade());
 			item.setValorVenda(p.getPreco());
-			item.setDesconto(BigDecimal.ZERO); // não existe desconto na DTO
+			item.setDesconto(BigDecimal.ZERO); 
 			pedido.getItens().add(item);
 		}
 
@@ -79,7 +79,7 @@ public class PedidoService {
 	}
 
 	public PedidoDTO buscarPorId(Long id) {
-		Pedido p = pedidoRepo.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado"));
+		Pedido p = pedidoRepo.findById(id).orElseThrow(() -> new NotFoundException("Pedido não encontrado em nosso sistema!"));
 		return toDto(p);
 	}
 
@@ -89,7 +89,7 @@ public class PedidoService {
 
 	public void deletar(Long id) {
 		if (!pedidoRepo.existsById(id)) {
-			throw new NotFoundException("Pedido não encontrado");
+			throw new NotFoundException("Não foi possível excluir o pedido! Ele não existe.");
 		}
 		pedidoRepo.deleteById(id);
 	}

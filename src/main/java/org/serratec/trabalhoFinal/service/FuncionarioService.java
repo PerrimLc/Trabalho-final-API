@@ -34,7 +34,6 @@ public class FuncionarioService {
 		
 		if (funcionarioRepository.findByEmail(dto.getEmail()).isPresent()) {
 	        throw new RuntimeException("Email já cadastrado como funcionário."); 
-	        // Use uma exceção de negócio mais apropriada
 	    }
 		
         Usuario usuario = new Usuario();

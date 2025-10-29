@@ -22,8 +22,8 @@ public class EmailService {
 		try {
 			SimpleMailMessage msg = new SimpleMailMessage();
 			msg.setTo(cliente.getEmail());
-			msg.setSubject("Cadastro " + acao);
-			msg.setText("Olá " + cliente.getNome() + ", seu cadastro foi " + acao + ".");
+			msg.setSubject(acao);
+			msg.setText("Olá " + cliente.getNome() + ", seu cadastro foi concluido com sucesso. Aproveite tudo que há de melhor em nossa cafeteria!");
 			mailSender.send(msg);
 			
 			System.out.println("E-mail enviado para " + cliente.getEmail());
@@ -37,8 +37,8 @@ public class EmailService {
 		try {
 			SimpleMailMessage msg = new SimpleMailMessage();
 			msg.setTo(funcionario.getEmail());
-			msg.setSubject("Cadastro " + acao);
-			msg.setText("Olá " + funcionario.getNome() + ", seu cadastro foi " + acao + ".");
+			msg.setSubject(acao);
+			msg.setText("Olá " + funcionario.getNome() + ", seu cadastro foi concluido com sucesso. Seja bem-vindo a nossa equipe!");
 			mailSender.send(msg);
 			
 			System.out.println("E-mail enviado para " + funcionario.getEmail());
