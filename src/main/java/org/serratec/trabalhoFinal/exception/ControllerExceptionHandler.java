@@ -44,7 +44,7 @@ public class ControllerExceptionHandler extends ResponseEntityExceptionHandler {
         ErrorResponse body = buildError(
                 HttpStatus.CONFLICT,
                 "Conflito de Dados",
-                "O registro não pôde ser salvo pois já existe no sistema (Ex: CPF ou E-mail duplicado).",
+                "O registro não pôde ser salvo pois já existe este dado no sistema.",
                 request.getRequestURI(),
                 null
         );
