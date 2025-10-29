@@ -123,6 +123,7 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               │   ├── ☕ PedidoController.java
         │               │   ├── ☕ PlanoController.java
         │               │   ├── ☕ ProdutoController.java
+        │                   ├── ☕ RecomendacaoController.java
         │               │   ├── ☕ UsuarioController.java
         │               │   └── ☕ WishlistController.java
         │               ├── 📁 domain
@@ -200,6 +201,7 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │                   ├── ☕ PedidoService.java
         │                   ├── ☕ PlanoService.java
         │                   ├── ☕ ProdutoService.java
+        │                   ├── ☕ RecomendacaoService.java
         │                   ├── ☕ UsuarioDetalheImpl.java
         │                   └── ☕ WishlistService.java
         └── 📁 utils
