@@ -27,24 +27,28 @@ public class Pedido {
     @ManyToOne(optional = false)
     private Cliente cliente;
 
-	@Enumerated(EnumType.STRING)
-	private StatusPedido status = StatusPedido.PENDENTE;
+    @Enumerated(EnumType.STRING)
+    private StatusPedido status = StatusPedido.PENDENTE;
 
     private LocalDateTime dataCriacao = LocalDateTime.now();
 
     @OneToMany(mappedBy = "pedido", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ItemPedido> itens = new ArrayList<>();
-    
-  	public BigDecimal getTotal() {
 
-		BigDecimal subtotal = itens.stream()
-				.map(i -> i.getValorVenda().multiply(new BigDecimal(i.getQuantidade()))
-						.subtract(i.getDesconto() == null ? BigDecimal.ZERO : i.getDesconto()))
-				.reduce(BigDecimal.ZERO, BigDecimal::add);
+    private BigDecimal valorTotal;
 
-		return subtotal;
-	}
+    public BigDecimal getTotal() {
+        return itens.stream()
+                .map(i -> i.getValorVenda().multiply(BigDecimal.valueOf(i.getQuantidade()))
+                        .subtract(i.getDesconto() != null ? i.getDesconto() : BigDecimal.ZERO))
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 
+    public BigDecimal getValorDescontoTotal() {
+        return itens.stream()
+                .map(i -> i.getDesconto() != null ? i.getDesconto() : BigDecimal.ZERO)
+                .reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
 
     public Long getId() {
         return id;
@@ -85,11 +89,16 @@ public class Pedido {
     public void setItens(List<ItemPedido> itens) {
         this.itens = itens;
     }
-	
-	public void adicionarItem(ItemPedido item) {
-		this.itens.add(item);
-		
-	}
-	
-}
 
+    public void adicionarItem(ItemPedido item) {
+        this.itens.add(item);
+    }
+
+    public BigDecimal getValorTotal() {
+        return valorTotal != null ? valorTotal : getTotal();
+    }
+
+    public void setValorTotal(BigDecimal valorTotal) {
+        this.valorTotal = valorTotal;
+    }
+}

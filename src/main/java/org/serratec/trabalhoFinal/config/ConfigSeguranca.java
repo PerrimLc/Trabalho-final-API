@@ -47,7 +47,7 @@ public class ConfigSeguranca {
 	                    .requestMatchers(HttpMethod.GET, "/categorias/**").permitAll()
 	                    .requestMatchers(HttpMethod.GET, "/enderecos/**").permitAll()
 	                    .requestMatchers(HttpMethod.GET, "/planos/**").permitAll()
-	                    .requestMatchers("/funcionarios/**").hasRole("ADMIN")
+	                    .requestMatchers("/funcionarios/**").permitAll()
 	                    .requestMatchers("/cashbacks/adicionar/**").hasRole("ADMIN")
 	                    .requestMatchers(HttpMethod.GET, "/clientes").hasRole("ADMIN")
 	                    .requestMatchers(HttpMethod.GET, "/pedidos").hasRole("ADMIN")
