@@ -20,7 +20,8 @@ O sistema de Cashback implementado tem o objetivo de fidelizar o cliente, gerand
   
 
 * Assim que uma compra é concluída, com ou sem o cashback, um email é enviado para o cliente informando o valor que ele possui na "carteira". Exemplo:
-* 
+* <img width="362,5" height="232,5" alt="image" src="https://github.com/user-attachments/assets/abf33ac6-fa11-4fb2-b437-1bbe0174c03e" />
+
 
 2. Fluxo de Serviço (.service)<br>
 A. CashbackService.java
@@ -167,6 +168,7 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               ├── 📁 exception
         │               │   ├── ☕ ControllerExceptionHandler.java
         │               │   ├── ☕ EmailException.java
+        │               │   ├── ☕ EstoqueInsuficienteException.java
         │               │   ├── ☕ ExternalServiceException.java
         │               │   ├── ☕ NotFoundException.java
         │               │   ├── ☕ SaldoInsuficienteException.java
