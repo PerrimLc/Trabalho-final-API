@@ -111,7 +111,6 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               ├── ☕ TrabalhoFinalApplication.java
         │               ├── 📁 config
         │               │   ├── ☕ ConfigSeguranca.java
-        │               │   ├── ☕ MailConfig.java
         │               │   └── ☕ SwaggerConfig.java
         │               ├── 📁 controller
         │               │   ├── ☕ AssinaturaController.java
@@ -119,13 +118,11 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               │   ├── ☕ CategoriaController.java
         │               │   ├── ☕ ClienteController.java
         │               │   ├── ☕ EnderecoController.java
-        │               │   ├── ☕ EstoqueController.java
         │               │   ├── ☕ FuncionarioController.java
         │               │   ├── ☕ PedidoController.java
         │               │   ├── ☕ PlanoController.java
         │               │   ├── ☕ ProdutoController.java
-        │                   ├── ☕ RecomendacaoController.java
-        │               │   ├── ☕ UsuarioController.java
+        │               │   ├── ☕ RecomendacaoController.java
         │               │   └── ☕ WishlistController.java
         │               ├── 📁 domain
         │               │   ├── ☕ Assinatura.java
@@ -133,7 +130,6 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               │   ├── ☕ Categoria.java
         │               │   ├── ☕ Cliente.java
         │               │   ├── ☕ Endereco.java
-        │               │   ├── ☕ Estoque.java
         │               │   ├── ☕ Funcionario.java
         │               │   ├── ☕ ItemPedido.java
         │               │   ├── ☕ Pedido.java
@@ -163,7 +159,6 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               │   ├── ☕ PedidoStatusAtualizacaoDTO.java
         │               │   ├── ☕ PlanoDTO.java
         │               │   ├── ☕ ProdutoDTO.java
-        │               │   ├── ☕ UsuarioDTO.java
         │               │   └── ☕ WishlistResponseDTO.java
         │               ├── 📁 exception
         │               │   ├── ☕ ControllerExceptionHandler.java
@@ -179,7 +174,6 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │               │   ├── ☕ CategoriaRepository.java
         │               │   ├── ☕ ClienteRepository.java
         │               │   ├── ☕ EnderecoRepository.java
-        │               │   ├── ☕ EstoqueRepository.java
         │               │   ├── ☕ FuncionarioRepository.java
         │               │   ├── ☕ PedidoRepository.java
         │               │   ├── ☕ PlanoRepository.java
@@ -198,7 +192,6 @@ O módulo de Assinaturas permite que os clientes contratem planos recorrentes, i
         │                   ├── ☕ DescontoService.java
         │                   ├── ☕ EmailService.java
         │                   ├── ☕ EnderecoService.java
-        │                   ├── ☕ EstoqueService.java
         │                   ├── ☕ FuncionarioService.java
         │                   ├── ☕ PedidoService.java
         │                   ├── ☕ PlanoService.java
