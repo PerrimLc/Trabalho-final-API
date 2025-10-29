@@ -24,86 +24,86 @@ import org.springframework.web.cors.UrlBasedCorsConfigurationSource;
 @Configuration
 public class ConfigSeguranca {
 
-	@Autowired
-	UserDetailsService userDetailsService;
+    @Autowired
+    UserDetailsService userDetailsService;
 
-	@Autowired
-	JwtUtil jwtUtil;
+    @Autowired
+    JwtUtil jwtUtil;
 
-	@Bean
-	public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
-			throws Exception {
-		return authenticationConfiguration.getAuthenticationManager();
-	}
+    @Bean
+    public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration)
+            throws Exception {
+        return authenticationConfiguration.getAuthenticationManager();
+    }
 
-	@Bean
-	public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
-	    http.csrf(csrf -> csrf.disable()).cors(cors -> cors.configurationSource(corsConfigurationSource()))
-	            .authorizeHttpRequests(auth -> auth
-	                    .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
-	                    .requestMatchers(HttpMethod.POST, "/login").permitAll()
-	                    .requestMatchers(HttpMethod.POST, "/clientes").permitAll()
-	                    .requestMatchers(HttpMethod.GET, "/produtos/**").permitAll()
-	                    .requestMatchers(HttpMethod.GET, "/categorias/**").permitAll()
-	                    .requestMatchers(HttpMethod.GET, "/enderecos/**").permitAll()
-	                    .requestMatchers(HttpMethod.GET, "/planos/**").permitAll()
-	                    .requestMatchers("/funcionarios/**").permitAll()
-	                    .requestMatchers("/cashbacks/adicionar/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.GET, "/clientes").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.GET, "/pedidos").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.POST, "/produtos").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.PUT, "/produtos/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.DELETE, "/produtos/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.POST, "/categorias").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.PUT, "/categorias/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.DELETE, "/categorias/**").hasRole("ADMIN")
-	                    .requestMatchers("/estoque/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.POST, "/planos").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.PUT, "/planos/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.DELETE, "/planos/**").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.GET, "/clientes/{id}").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers(HttpMethod.PUT, "/clientes/{id}").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers(HttpMethod.DELETE, "/clientes/{id}").hasRole("ADMIN")
-	                    .requestMatchers(HttpMethod.GET, "/pedidos/meus").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers(HttpMethod.GET, "/pedidos/{id}").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers(HttpMethod.DELETE, "/pedidos/{id}").hasRole("ADMIN")
-	                    .requestMatchers("/cashbacks/cliente/{clienteId}").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers("/pedidos/cart/*").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers("/pedidos/pagar/*").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers("/clientes/*/wishlist/**").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers("/assinaturas/**").hasAnyRole("ADMIN", "USER")
-	                    .requestMatchers("/recomendacoes/**").hasAnyRole("ADMIN", "USER")
-	                    .anyRequest().authenticated() 
-	            ).sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
+    @Bean
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
+        http.csrf(csrf -> csrf.disable()).cors(cors -> cors.configurationSource(corsConfigurationSource()))
+                .authorizeHttpRequests(auth -> auth
+                        .requestMatchers("/v3/api-docs/**", "/swagger-ui/**", "/swagger-ui.html").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/login").permitAll()
+                        .requestMatchers(HttpMethod.POST, "api/clientes").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/produtos/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/categorias/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/enderecos/**").permitAll()
+                        .requestMatchers(HttpMethod.GET, "api/planos/**").permitAll()
+                        .requestMatchers("api/funcionarios/**").hasRole("ADMIN")
+                        .requestMatchers("api/cashbacks/adicionar/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "api/clientes").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "api/pedidos").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "api/produtos").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "api/produtos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "api/produtos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "api/categorias").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "api/categorias/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "api/categorias/**").hasRole("ADMIN")
+                        .requestMatchers("api/estoque/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.POST, "api/planos").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.PUT, "api/planos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.DELETE, "api/planos/**").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "api/clientes/{id}").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.PUT, "api/clientes/{id}").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.DELETE, "api/clientes/{id}").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "api/pedidos/meus").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.GET, "api/pedidos/{id}").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers(HttpMethod.DELETE, "api/pedidos/{id}").hasRole("ADMIN")
+                        .requestMatchers("api/cashbacks/cliente/{clienteId}").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("api/pedidos/cart/*").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("api/pedidos/pagar/*").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("api/clientes/*/wishlist/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("api/assinaturas/**").hasAnyRole("ADMIN", "USER")
+                        .requestMatchers("api/recomendacoes/**").hasAnyRole("ADMIN", "USER")
+                        .anyRequest().authenticated()
+                ).sessionManagement(sess -> sess.sessionCreationPolicy(SessionCreationPolicy.STATELESS));
 
-		JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(
-				authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil);
-		jwtAuthenticationFilter.setFilterProcessesUrl("/login");
+        JwtAuthenticationFilter jwtAuthenticationFilter = new JwtAuthenticationFilter(
+                authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil);
+        jwtAuthenticationFilter.setFilterProcessesUrl("/login");
 
-		JwtAuthorizationFilter jwtAuthorizationFilter = new JwtAuthorizationFilter(
-				authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil,
-				userDetailsService);
+        JwtAuthorizationFilter jwtAuthorizationFilter = new JwtAuthorizationFilter(
+                authenticationManager(http.getSharedObject(AuthenticationConfiguration.class)), jwtUtil,
+                userDetailsService);
 
-		http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
-		http.addFilter(jwtAuthenticationFilter);
+        http.addFilterBefore(jwtAuthorizationFilter, UsernamePasswordAuthenticationFilter.class);
+        http.addFilter(jwtAuthenticationFilter);
 
-		return http.build();
-	}
+        return http.build();
+    }
 
-	@Bean
-	CorsConfigurationSource corsConfigurationSource() {
-		CorsConfiguration corsConfiguration = new CorsConfiguration();
-		corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
-		corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
-		corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
-		corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
-		UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
-		source.registerCorsConfiguration("/**", corsConfiguration);
-		return source;
-	}
+    @Bean
+    CorsConfigurationSource corsConfigurationSource() {
+        CorsConfiguration corsConfiguration = new CorsConfiguration();
+        corsConfiguration.setAllowedOrigins(Arrays.asList("http://localhost:3000"));
+        corsConfiguration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "DELETE"));
+        corsConfiguration.setAllowedHeaders(Arrays.asList("*"));
+        corsConfiguration.setExposedHeaders(Arrays.asList("Authorization"));
+        UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
+        source.registerCorsConfiguration("/**", corsConfiguration);
+        return source;
+    }
 
-	@Bean
-	public BCryptPasswordEncoder bcryptPasswordEncoder() {
-		return new BCryptPasswordEncoder();
-	}
+    @Bean
+    public BCryptPasswordEncoder bcryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
 }
