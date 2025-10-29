@@ -117,7 +117,7 @@ public class ClienteService {
 
     private ClienteDTO toDto(Cliente cliente) {
         ClienteDTO dto = new ClienteDTO();
-        dto.setId(cliente.getUsuario() != null ? cliente.getUsuario().getId() : null);
+        dto.setId(cliente.getId());
         dto.setNome(cliente.getNome());
         dto.setTelefone(cliente.getTelefone());
         dto.setEmail(cliente.getEmail());

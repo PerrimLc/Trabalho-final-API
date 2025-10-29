@@ -2,7 +2,7 @@ package org.serratec.trabalhoFinal.dto;
 
 public class ClienteDTO {
 
-    private Long idUsuario;
+    private Long id;
     private String nome;
     private String telefone;
     private String email;
@@ -13,7 +13,7 @@ public class ClienteDTO {
     public ClienteDTO() {}
 
     public ClienteDTO(Long id, String nome, String telefone, String email, String cpf, EnderecoDTO endereco, String role) {
-        this.idUsuario = id;
+        this.id = id;
         this.nome = nome;
         this.telefone = telefone;
         this.email = email;
@@ -23,11 +23,11 @@ public class ClienteDTO {
     }
 
     public Long getId() {
-        return idUsuario;
+        return id;
     }
 
     public void setId(Long id) {
-        this.idUsuario = id;
+        this.id = id;
     }
 
     public String getNome() {
